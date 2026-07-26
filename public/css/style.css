@@ -687,6 +687,10 @@ a {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
     .nav-links {
         display: none;
         position: absolute;
@@ -716,17 +720,44 @@ a {
         font-size: 1rem;
     }
 
+    .hero {
+        padding: 3rem 1rem;
+    }
+
     .btn-outline {
         margin-left: 0;
         margin-top: 0.5rem;
     }
 
     .section {
-        padding: 3rem 1rem;
+        padding: 2rem 1rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .materi-item {
+        padding: 1rem 1.25rem;
+        gap: 1rem;
+    }
+
+    .materi-tag {
+        margin-left: 0;
+        margin-top: 0.25rem;
     }
 
     .materi-body {
         padding: 1.5rem;
+    }
+
+    .materi-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .materi-header .meta {
+        flex-wrap: wrap;
+        gap: 0.75rem;
     }
 
     .materi-nav {
@@ -738,9 +769,109 @@ a {
         text-align: center;
     }
 
+    .quiz-card {
+        padding: 1.25rem;
+    }
+
+    .quiz-card .question {
+        font-size: 1.05rem;
+    }
+
+    .quiz-option {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+
+    .quiz-result .score {
+        font-size: 2.5rem;
+    }
+
+    .quiz-result .message {
+        font-size: 1rem;
+    }
+
     .footer .container {
         flex-direction: column;
         text-align: center;
+    }
+
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+
+    .about-content {
+        padding: 0 0.5rem;
+    }
+
+    .stat-item .number {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero {
+        padding: 2rem 0.75rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.4rem;
+    }
+
+    .materi-item {
+        padding: 0.85rem 1rem;
+        gap: 0.75rem;
+    }
+
+    .materi-number {
+        width: 40px;
+        height: 40px;
+        font-size: 0.95rem;
+    }
+
+    .materi-info h3 {
+        font-size: 1rem;
+    }
+
+    .materi-info p {
+        font-size: 0.8rem;
+    }
+
+    .materi-tag {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+
+    .quiz-card {
+        padding: 1rem;
+    }
+
+    .quiz-card .question {
+        font-size: 0.95rem;
+    }
+
+    .quiz-option {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .quiz-result .score {
+        font-size: 2rem;
+    }
+
+    .card {
+        padding: 1.25rem;
+    }
+
+    .card h3 {
+        font-size: 1.05rem;
     }
 }
 
