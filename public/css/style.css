@@ -130,6 +130,50 @@ a {
     transition: var(--transition);
 }
 
+/* ===== NAVBAR ADMIN ===== */
+.navbar-admin {
+    background: #1e293b;
+    border-color: #334155;
+}
+.logo-admin {
+    color: white !important;
+}
+.logo-admin span {
+    background: white;
+    color: #1e293b;
+}
+.navbar-admin .nav-links a {
+    color: #94a3b8;
+}
+.navbar-admin .nav-links a:hover,
+.navbar-admin .nav-links a.active {
+    color: white;
+    background: rgba(255,255,255,0.1);
+}
+.hamburger-admin span {
+    background: white;
+}
+.btn-logout-nav {
+    background: rgba(255,255,255,0.15) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+}
+.btn-logout-nav:hover {
+    background: rgba(255,255,255,0.25) !important;
+}
+
+/* ===== NAVBAR STUDENT ===== */
+.navbar-student .nav-links a {
+    color: var(--text-muted);
+}
+.navbar-student .nav-links a:hover,
+.navbar-student .nav-links a.active {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
 /* ===== HERO ===== */
 .hero {
     background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
@@ -710,6 +754,16 @@ a {
 
     .hamburger {
         display: flex;
+    }
+
+    .hamburger.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
     }
 
     .hero h1 {

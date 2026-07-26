@@ -5,6 +5,7 @@ const navLinks = document.querySelector('.nav-links');
 if (hamburger) {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('open');
+        hamburger.classList.toggle('open');
     });
 }
 
@@ -12,6 +13,7 @@ if (hamburger) {
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('open');
+        if (hamburger) hamburger.classList.remove('open');
     });
 });
 
