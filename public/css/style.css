@@ -159,6 +159,12 @@ a {
     color: white !important;
     font-weight: 600 !important;
     border-radius: 8px !important;
+    padding: 8px 16px !important;
+    font-size: 0.9rem !important;
+    display: none !important;
+}
+@media (max-width: 768px) {
+    .btn-logout-nav { display: inline-block !important; }
 }
 .btn-logout-nav:hover {
     background: rgba(255,255,255,0.25) !important;
