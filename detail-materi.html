@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Materi - WEB-FIS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span>E</span> WEB-FIS
+            </a>
+            <ul class="nav-links">
+                <li><a href="materi.html">Materi</a></li>
+                <li><a href="quiz.html">Kuis</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="materi-content" id="materi-content">
+            <!-- Content loaded by JS -->
+        </div>
+    </section>
+
+    <div class="materi-nav" id="materi-nav"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 WEB-FIS. Dibuat untuk Skripsi.</p>
+            <a href="tentang.html">Tentang Kami</a>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Kembali ke atas">↑</button>
+    <script src="js/main.js"></script>
+    <script>
+        const materiData = {
+            1: {
+                title: "Pengenalan Web Development",
+                readTime: "5 menit",
+                level: "Dasar",
+                content: `
+                    <h2>Apa itu Web Development?</h2>
+                    <p>Web development adalah proses pembuatan dan pemeliharaan website. Website yang kamu kunjungi setiap hari dibuat oleh para web developer menggunakan berbagai teknologi dan bahasa pemrograman.</p>
+                    <p>Web development terbagi menjadi tiga bagian utama:</p>
+                    <ul>
+                        <li><strong>Frontend</strong> - Bagian yang dilihat oleh pengguna (tampilan, desain, interaksi)</li>
+                        <li><strong>Backend</strong> - Bagian server yang memproses data dan logika aplikasi</li>
+                        <li><strong>Database</strong> - Tempat menyimpan dan mengelola data</li>
+                    </ul>
+
+                    <h2>Teknologi yang Digunakan</h2>
+                    <p>Berikut adalah teknologi utama dalam web development:</p>
+                    <ul>
+                        <li><code>HTML</code> - Struktur dan konten halaman web</li>
+                        <li><code>CSS</code> - Style dan tampilan visual</li>
+                        <li><code>JavaScript</code> - Interaksi dan logika</li>
+                        <li><code>Node.js / Python / PHP</code> - Backend programming</li>
+                    </ul>
+
+                    <h2>Cara Kerja Website</h2>
+                    <p>Ketika kamu mengetik URL di browser:</p>
+                    <ol>
+                        <li>Browser mengirim request ke server</li>
+                        <li>Server memproses request dan mengirim balik file-file yang dibutuhkan</li>
+                        <li>Browser membaca file HTML, CSS, dan JavaScript</li>
+                        <li>Browser menampilkan halaman web di layar kamu</li>
+                    </ol>
+                    <p>Proses ini terjadi dalam hitungan milidetik sehingga website terasa cepat dimuat.</p>
+
+                    <h2>Mengapa Belajar Web Development?</h2>
+                    <p>Web development adalah skill yang sangat dicari di era digital. Dengan menguasai web development, kamu bisa:</p>
+                    <ul>
+                        <li>Membangun website pribadi atau bisnis</li>
+                        <li>Bekerja sebagai frontend/backend developer</li>
+                        <li>Memulai startup atau proyek digital</li>
+                        <li>Freelance dan bekerja dari mana saja</li>
+                    </ul>
+                `
+            },
+            2: {
+                title: "HTML - Struktur Halaman Web",
+                readTime: "8 menit",
+                level: "Dasar",
+                content: `
+                    <h2>Apa itu HTML?</h2>
+                    <p>HTML (HyperText Markup Language) adalah bahasa markup yang digunakan untuk membuat struktur halaman web. HTML bukanlah bahasa pemrograman, melainkan bahasa markup yang mendefinisikan elemen-elemen pada halaman web.</p>
+
+                    <h2>Struktur Dasar HTML</h2>
+                    <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Judul Halaman&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Selamat Datang!&lt;/h1&gt;
+    &lt;p&gt;Ini adalah paragraf pertama.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+                    <h2>Tag HTML Penting</h2>
+                    <p>Berikut adalah tag-tag HTML yang paling sering digunakan:</p>
+                    <ul>
+                        <li><code>&lt;h1&gt; - &lt;h6&gt;</code> - Heading (judul), dari paling besar hingga kecil</li>
+                        <li><code>&lt;p&gt;</code> - Paragraf</li>
+                        <li><code>&lt;a&gt;</code> - Tautan/link</li>
+                        <li><code>&lt;img&gt;</code> - Gambar</li>
+                        <li><code>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</code> - List (daftar)</li>
+                        <li><code>&lt;div&gt;</code> - Container pembungkus</li>
+                        <li><code>&lt;form&gt;</code> - Formulir input</li>
+                    </ul>
+
+                    <h2>Contoh: Membuat Link</h2>
+                    <pre>&lt;a href="https://google.com"&gt;Kunjungi Google&lt;/a&gt;</pre>
+                    <p>Tag <code>&lt;a&gt;</code> memiliki atribut <code>href</code> yang berisi URL tujuan link.</p>
+
+                    <h2>Contoh: Menambahkan Gambar</h2>
+                    <pre>&lt;img src="foto.jpg" alt="Deskripsi gambar" width="300"&gt;</pre>
+                    <p>Atribut <code>alt</code> penting untuk aksesibilitas, yaitu teks yang muncul jika gambar gagal dimuat.</p>
+                `
+            },
+            3: {
+                title: "CSS - Mempercantik Tampilan",
+                readTime: "8 menit",
+                level: "Dasar",
+                content: `
+                    <h2>Apa itu CSS?</h2>
+                    <p>CSS (Cascading Style Sheets) adalah bahasa yang digunakan untuk mengatur tampilan dan style dari elemen HTML. Dengan CSS, kamu bisa mengubah warna, font, layout, dan berbagai aspek visual lainnya.</p>
+
+                    <h2>Cara Menggunakan CSS</h2>
+                    <p>Ada tiga cara menggunakan CSS:</p>
+                    <ol>
+                        <li><strong>Inline CSS</strong> - Langsung pada elemen HTML</li>
+                        <li><strong>Internal CSS</strong> - Di dalam tag &lt;style&gt; pada HTML</li>
+                        <li><strong>External CSS</strong> - File CSS terpisah (paling direkomendasikan)</li>
+                    </ol>
+
+                    <h2>Contoh: External CSS</h2>
+                    <pre>/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}</pre>
+
+                    <h2>CSS Selector</h2>
+                    <p>Selector digunakan untuk memilih elemen HTML yang akan di-style:</p>
+                    <ul>
+                        <li><code>.classname</code> - Class selector (titik)</li>
+                        <li><code>#idname</code> - ID selector (hash)</li>
+                        <li><code>element</code> - Element selector (langsung nama tag)</li>
+                        <li><code>parent child</code> - Descendant selector</li>
+                    </ul>
+
+                    <h2>Box Model</h2>
+                    <p>Setiap elemen HTML memiliki box model yang terdiri dari:</p>
+                    <ul>
+                        <li><strong>Content</strong> - Isi dari elemen</li>
+                        <li><strong>Padding</strong> - Ruang antara content dan border</li>
+                        <li><strong>Border</strong> - Garis tepi elemen</li>
+                        <li><strong>Margin</strong> - Ruang antara elemen dengan elemen lain</li>
+                    </ul>
+                `
+            },
+            4: {
+                title: "JavaScript - Interaksi Pengguna",
+                readTime: "10 menit",
+                level: "Menengah",
+                content: `
+                    <h2>Apa itu JavaScript?</h2>
+                    <p>JavaScript adalah bahasa pemrograman yang membuat halaman web menjadi interaktif. Dengan JavaScript, kamu bisa menangani event klik, memvalidasi form, mengubah DOM, dan banyak lagi.</p>
+
+                    <h2>Dasar JavaScript</h2>
+                    <pre>// Variabel
+let nama = "Budi";
+const umur = 20;
+
+// Fungsi
+function sapa(nama) {
+    return "Halo, " + nama + "!";
+}
+
+// Arrow function
+const tambah = (a, b) => a + b;</pre>
+
+                    <h2>Manipulasi DOM</h2>
+                    <p>DOM (Document Object Model) adalah representasi struktur HTML yang bisa diakses dan dimanipulasi oleh JavaScript:</p>
+                    <pre>// Mengubah teks
+document.getElementById("judul").textContent = "Judul Baru";
+
+// Mengubah style
+document.getElementById("box").style.backgroundColor = "blue";
+
+// Menambah event listener
+document.getElementById("tombol").addEventListener("click", function() {
+    alert("Tombol diklik!");
+});</pre>
+
+                    <h2>Event Handling</h2>
+                    <p>JavaScript bisa merespon berbagai event dari pengguna:</p>
+                    <ul>
+                        <li><code>click</code> - Klik mouse</li>
+                        <li><code>submit</code> - Submit form</li>
+                        <li><code>keydown</code> - Tekan tombol keyboard</li>
+                        <li><code>mouseover</code> - Mouse di atas elemen</li>
+                    </ul>
+
+                    <h2>Fetch API</h2>
+                    <p>Untuk mengambil data dari server:</p>
+                    <pre>fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });</pre>
+                `
+            },
+            5: {
+                title: "Responsive Design",
+                readTime: "7 menit",
+                level: "Menengah",
+                content: `
+                    <h2>Apa itu Responsive Design?</h2>
+                    <p>Responsive design adalah pendekatan desain web yang membuat halaman website tampil optimal di semua ukuran layar, mulai dari desktop, tablet, hingga smartphone.</p>
+
+                    <h2>Media Query</h2>
+                    <p>Media query adalah fitur CSS yang memungkinkan kamu menerapkan style berbeda berdasarkan ukuran layar:</p>
+                    <pre>/* Default: Mobile first */
+.container {
+    padding: 1rem;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .container {
+        padding: 2rem;
+        max-width: 720px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+}</pre>
+
+                    <h2>Flexbox</h2>
+                    <p>Flexbox adalah fitur CSS untuk membuat layout fleksibel:</p>
+                    <pre>.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}</pre>
+
+                    <h2>CSS Grid</h2>
+                    <p>Grid adalah fitur CSS untuk layout dua dimensi:</p>
+                    <pre>.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}</pre>
+
+                    <h2>Tips Responsive Design</h2>
+                    <ul>
+                        <li>Gunakan <code>relative units</code> seperti %, em, rem, vw, vh</li>
+                        <li>Gunakan <code>max-width</code> daripada <code>width</code> tetap</li>
+                        <li>Gambar harus menggunakan <code>max-width: 100%</code></li>
+                        <li>Test di berbagai ukuran layar</li>
+                    </ul>
+                `
+            },
+            6: {
+                title: "Git & Version Control",
+                readTime: "7 menit",
+                level: "Menengah",
+                content: `
+                    <h2>Apa itu Git?</h2>
+                    <p>Git adalah sistem version control yang digunakan untuk melacak perubahan pada kode sumber selama pengembangan software. Git memungkinkan beberapa developer bekerja bersama pada proyek yang sama.</p>
+
+                    <h2>Perintah Dasar Git</h2>
+                    <pre># Inisialisasi repository baru
+git init
+
+# Clone repository
+git clone https://github.com/user/repo.git
+
+# Cek status
+git status
+
+# Tambah file ke staging
+git add filename.txt
+git add .  # Semua file
+
+# Commit perubahan
+git commit -m "Deskripsi perubahan"
+
+# Push ke remote
+git push origin main
+
+# Pull dari remote
+git pull origin main</pre>
+
+                    <h2>Branching</h2>
+                    <p>Branch memungkinkan kamu membuat salinan kode untuk fitur baru tanpa mengganggu kode utama:</p>
+                    <pre># Buat branch baru
+git branch fitur-baru
+
+# Pindah ke branch
+git checkout fitur-baru
+
+# Gabungkan branch
+git checkout main
+git merge fitur-baru</pre>
+
+                    <h2>.gitignore</h2>
+                    <p>File <code>.gitignore</code> digunakan untuk memberitahu Git file mana yang tidak perlu di-track:</p>
+                    <pre>node_modules/
+.env
+*.log
+.DS_Store</pre>
+                `
+            },
+            7: {
+                title: "Intro Backend Development",
+                readTime: "8 menit",
+                level: "Lanjutan",
+                content: `
+                    <h2>Apa itu Backend?</h2>
+                    <p>Backend adalah bagian dari aplikasi web yang berjalan di server. Backend menangani logika bisnis, autentikasi pengguna, penyimpanan data, dan komunikasi dengan database.</p>
+
+                    <h2>Konsep Dasar Backend</h2>
+                    <ul>
+                        <li><strong>Server</strong> - Komputer yang menjalankan aplikasi dan melayani request</li>
+                        <li><strong>API</strong> - Application Programming Interface, cara frontend berkomunikasi dengan backend</li>
+                        <li><strong>Database</strong> - Tempat menyimpan data aplikasi</li>
+                        <li><strong>Authentication</strong> - Proses verifikasi identitas pengguna</li>
+                    </ul>
+
+                    <h2>REST API</h2>
+                    <p>REST API menggunakan HTTP method untuk operasi CRUD:</p>
+                    <pre>GET    /api/users      - Ambil semua data
+GET    /api/users/1    - Ambil data user dengan ID 1
+POST   /api/users      - Buat data baru
+PUT    /api/users/1    - Update data user ID 1
+DELETE /api/users/1    - Hapus data user ID 1</pre>
+
+                    <h2>Database</h2>
+                    <p>Dua jenis database utama:</p>
+                    <ul>
+                        <li><strong>SQL</strong> (MySQL, PostgreSQL) - Terstruktur dengan tabel dan relasi</li>
+                        <li><strong>NoSQL</strong> (MongoDB, Firebase) - Flexible dengan dokumen/koleksi</li>
+                    </ul>
+
+                    <h2>Node.js sebagai Backend</h2>
+                    <pre>const express = require('express');
+const app = express();
+
+app.get('/api/hello', (req, res) => {
+    res.json({ message: 'Hello World!' });
+});
+
+app.listen(3000, () => {
+    console.log('Server berjalan di port 3000');
+});</pre>
+                `
+            },
+            8: {
+                title: "Deploy Website",
+                readTime: "6 menit",
+                level: "Lanjutan",
+                content: `
+                    <h2>Apa itu Deploy?</h2>
+                    <p>Deploy adalah proses mengonlinekan website agar bisa diakses oleh pengguna di internet melalui URL. Sebelum deploy, website hanya bisa dijalankan di komputer lokal (localhost).</p>
+
+                    <h2>Platform Hosting Gratis</h2>
+                    <ul>
+                        <li><strong>GitHub Pages</strong> - Cocok untuk website statis (HTML/CSS/JS)</li>
+                        <li><strong>Netlify</strong> - Mudah digunakan, support CI/CD</li>
+                        <li><strong>Vercel</strong> - Optimasi untuk framework modern (Next.js, dll)</li>
+                        <li><strong>Render</strong> - Support backend dan database</li>
+                    </ul>
+
+                    <h2>Deploy ke GitHub Pages</h2>
+                    <pre>1. Push kode ke GitHub repository
+2. Buka repository di GitHub
+3. Klik tab "Settings"
+4. Pilih "Pages" di sidebar
+5. Pilih branch "main" dan folder "/ (root)"
+6. Klik Save
+7. Website akan bisa diakses di:
+   https://username.github.io/repo-name</pre>
+
+                    <h2>Domain & DNS</h2>
+                    <p>Untuk menggunakan domain sendiri (contoh: mywebsite.com):</p>
+                    <ol>
+                        <li>Beli domain dari registrar (Namecheap, Google Domains, dll)</li>
+                        <li>Setting DNS record untuk mengarah ke hosting</li>
+                        <li>Tunggu propagasi DNS (biasanya 1-24 jam)</li>
+                        <li>SSL certificate (HTTPS) biasanya otomatis disediakan</li>
+                    </ol>
+
+                    <h2>Tips Sebelum Deploy</h2>
+                    <ul>
+                        <li>Pastikan tidak ada file sensitif (password, API key) di kode</li>
+                        <li>Optimasi gambar dan file aset</li>
+                        <li>Test website di berbagai browser</li>
+                        <li>Periksa console untuk error</li>
+                    </ul>
+                `
+            }
+        };
+
+        function loadMateri() {
+            const params = new URLSearchParams(window.location.search);
+            const bab = parseInt(params.get('bab')) || 1;
+            const materi = materiData[bab];
+
+            if (!materi) {
+                document.getElementById('materi-content').innerHTML = '<h2>Materi tidak ditemukan</h2><p><a href="materi.html">Kembali ke daftar materi</a></p>';
+                return;
+            }
+
+            document.title = `${materi.title} - WEB-FIS`;
+
+            document.getElementById('materi-content').innerHTML = `
+                <div class="materi-header">
+                    <h1>${materi.title}</h1>
+                    <div class="meta">
+                        <span>📖 ${materi.readTime} baca</span>
+                        <span>📊 Level: ${materi.level}</span>
+                        <span>📖 Bab ${bab} dari 8</span>
+                    </div>
+                </div>
+                <div class="materi-body">
+                    ${materi.content}
+                </div>
+            `;
+
+            // Navigation
+            const nav = document.getElementById('materi-nav');
+            let navHTML = '';
+            if (bab > 1) {
+                const prev = materiData[bab - 1];
+                navHTML += `<a href="detail-materi.html?bab=${bab - 1}">← ${prev.title}</a>`;
+            } else {
+                navHTML += `<a href="materi.html">← Daftar Materi</a>`;
+            }
+            if (bab < 8) {
+                const next = materiData[bab + 1];
+                navHTML += `<a href="detail-materi.html?bab=${bab + 1}">${next.title} →</a>`;
+            } else {
+                navHTML += `<a href="quiz.html">Mulai Kuis →</a>`;
+            }
+            nav.innerHTML = navHTML;
+
+            // Kirim progress ke server jika sudah login
+            try {
+                const user = JSON.parse(localStorage.getItem('WEB-FIS_user'));
+                if (user && user.id) {
+                    fetch('/api/progress/access', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ studentId: user.id, bab })
+                    }).then(() => console.log(`Progress bab ${bab} tersimpan`));
+                }
+            } catch(e) {}
+        }
+
+        loadMateri();
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+[
+  {
+    "studentId": "bde4743d-a127-4be2-aaf9-a1ddcff53e72",
+    "materiAccessed": [
+      1,
+      2
+    ],
+    "lastAccess": "2026-07-26T03:16:08.339Z"
+  },
+  {
+    "studentId": "fefa4f5e-797f-4750-95dd-d16a2fbe0ff4",
+    "materiAccessed": [],
+    "lastAccess": null
+  }
+]

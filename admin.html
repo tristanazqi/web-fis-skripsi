@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - WEB-FIS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-hero {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white; padding: 2rem 2rem;
+        }
+        .admin-hero h1 { font-size: 1.5rem; font-weight: 700; }
+        .admin-hero p { opacity: 0.7; font-size: 0.9rem; }
+
+        .admin-toolbar {
+            max-width: 1100px; margin: -1rem auto 0; padding: 0 2rem;
+            display: flex; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 2;
+        }
+        .admin-toolbar .search-box {
+            flex: 1; min-width: 250px; padding: 12px 16px;
+            border: 2px solid var(--border); border-radius: 10px;
+            font-size: 0.95rem; outline: none; background: var(--card-bg);
+            box-shadow: var(--shadow); font-family: inherit;
+        }
+        .admin-toolbar .search-box:focus { border-color: var(--primary); }
+
+        .admin-section { padding: 2rem; max-width: 1100px; margin: 0 auto; }
+
+        .admin-stats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem; margin-bottom: 2rem;
+        }
+        .admin-stat {
+            background: var(--card-bg); border-radius: var(--radius);
+            padding: 1.25rem; box-shadow: var(--shadow); border: 1px solid var(--border);
+        }
+        .admin-stat .num { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+        .admin-stat .lbl { color: var(--text-muted); font-size: 0.8rem; margin-top: 0.15rem; }
+
+        .students-table-wrap {
+            background: var(--card-bg); border-radius: var(--radius);
+            border: 1px solid var(--border); overflow-x: auto;
+        }
+        .students-table {
+            width: 100%; border-collapse: collapse; min-width: 700px;
+        }
+        .students-table th, .students-table td {
+            padding: 12px 16px; text-align: left; font-size: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .students-table th {
+            background: #f8fafc; font-weight: 600; color: var(--text-muted);
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .students-table tr:hover { background: #f8fafc; }
+        .students-table .badge {
+            padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+        }
+        .badge.green { background: #d1fae5; color: #059669; }
+        .badge.blue { background: #dbeafe; color: #2563eb; }
+        .badge.yellow { background: #fef3c7; color: #d97706; }
+        .badge.red { background: #fee2e2; color: #991b1b; }
+
+        .btn-sm {
+            padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border);
+            background: var(--card-bg); cursor: pointer; font-size: 0.8rem;
+            font-weight: 600; transition: var(--transition);
+        }
+        .btn-sm:hover { border-color: var(--primary); color: var(--primary); }
+
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); z-index: 200; align-items: center;
+            justify-content: center; padding: 2rem;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal {
+            background: var(--card-bg); border-radius: var(--radius); padding: 2rem;
+            max-width: 700px; width: 100%; max-height: 80vh; overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+        }
+        .modal h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .modal-close {
+            float: right; background: none; border: none; font-size: 1.5rem;
+            cursor: pointer; color: var(--text-muted);
+        }
+        .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .detail-item { background: #f8fafc; padding: 10px 14px; border-radius: 8px; }
+        .detail-item .lbl { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .detail-item .val { font-weight: 700; font-size: 1.1rem; }
+
+        .answer-list { list-style: none; }
+        .answer-item {
+            padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px;
+            margin-bottom: 0.5rem; font-size: 0.9rem;
+        }
+        .answer-item .q { font-weight: 600; margin-bottom: 4px; }
+        .answer-item .a { color: var(--text-muted); }
+        .answer-item .a strong { color: var(--success); }
+        .answer-item .a .wrong-ans { color: var(--danger); }
+
+        .no-data { text-align: center; padding: 3rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <nav class="navbar" style="background:#1e293b; border-color:#334155;">
+        <div class="container">
+            <a href="admin.html" class="logo" style="color:white;"><span>E</span> WEB-FIS Admin</a>
+            <ul class="nav-links">
+                <li><a href="admin.html" class="active" style="color:white;">Siswa</a></li>
+                <li><a href="index.html" onclick="localStorage.removeItem('WEB-FIS_user')" style="color:#94a3b8;">Logout</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="admin-hero">
+        <div class="container">
+            <h1>Panel Administrator</h1>
+            <p>Kelola dan pantau data siswa, materi, dan hasil kuis</p>
+        </div>
+    </div>
+
+    <div class="admin-toolbar">
+        <input type="text" class="search-box" id="search" placeholder="Cari siswa berdasarkan nama, NIM, atau email..." oninput="filterStudents()">
+    </div>
+
+    <div class="admin-section">
+        <div class="admin-stats">
+            <div class="admin-stat">
+                <div class="num" id="total-siswa">0</div>
+                <div class="lbl">Total Siswa</div>
+            </div>
+            <div class="admin-stat">
+                <div class="num" id="total-quiz">0</div>
+                <div class="lbl">Total Kuis Dikerjakan</div>
+            </div>
+            <div class="admin-stat">
+                <div class="num" id="avg-score">-</div>
+                <div class="lbl">Rata-rata Skor</div>
+            </div>
+            <div class="admin-stat">
+                <div class="num" id="active-today">-</div>
+                <div class="lbl">Terakhir Akses Hari Ini</div>
+            </div>
+        </div>
+
+        <div class="students-table-wrap">
+            <table class="students-table" id="students-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>NIM</th>
+                        <th>Materi</th>
+                        <th>Kuis</th>
+                        <th>Rata-rata</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="students-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Detail -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 id="modal-title">Detail Siswa</h2>
+            <div class="detail-grid" id="modal-detail"></div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:0.75rem;">Riwayat Jawaban Kuis</h3>
+            <div id="modal-answers"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 WEB-FIS Admin Panel</p>
+        </div>
+    </footer>
+
+    <script>
+        const quizQuestions = [
+            "Apa kepanjangan dari HTML?",
+            "CSS digunakan untuk?",
+            "Bahasa pemrograman apakah yang berjalan di browser?",
+            "Apa fungsi dari tag <a> pada HTML?",
+            "Manakah yang merupakan framework CSS?",
+            "Apa itu DOM dalam web development?",
+            "Method HTTP apa yang digunakan untuk mengambil data?",
+            "Apa kepanjangan dari CSS?"
+        ];
+
+        const quizCorrectAnswers = [
+            "Hyper Text Markup Language",
+            "Mempercantik tampilan halaman web",
+            "JavaScript",
+            "Membuat tautan/link",
+            "Tailwind CSS",
+            "Document Object Model",
+            "GET",
+            "Cascading Style Sheets"
+        ];
+
+        let allStudents = [];
+
+        function logout() {
+            localStorage.removeItem('WEB-FIS_user');
+            window.location.href = 'index.html';
+        }
+
+        async function loadStudents() {
+            const user = JSON.parse(localStorage.getItem('WEB-FIS_user'));
+            if (!user || user.role !== 'admin') {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/admin/students');
+                allStudents = await res.json();
+                renderTable(allStudents);
+                updateStats(allStudents);
+            } catch (err) {
+                console.error('Gagal load data:', err);
+            }
+        }
+
+        function renderTable(students) {
+            const tbody = document.getElementById('students-body');
+            if (students.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="no-data">Belum ada siswa terdaftar</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = students.map((s, i) => {
+                const avg = s.avgScore;
+                const cls = avg >= 80 ? 'green' : avg >= 60 ? 'yellow' : s.avgScore > 0 ? 'red' : '';
+                const avgText = s.quizCount > 0 ? `${avg}%` : '-';
+
+                return `<tr>
+                    <td>${i + 1}</td>
+                    <td><strong>${s.name}</strong></td>
+                    <td>${s.nim}</td>
+                    <td><span class="badge blue">${s.materiAccessed.length}/8</span></td>
+                    <td><span class="badge ${s.quizCount > 0 ? 'green' : ''}">${s.quizCount}x</span></td>
+                    <td>${cls ? `<span class="badge ${cls}">${avgText}</span>` : avgText}</td>
+                    <td><button class="btn-sm" onclick="showDetail('${s.id}')">Detail</button></td>
+                </tr>`;
+            }).join('');
+        }
+
+        function updateStats(students) {
+            document.getElementById('total-siswa').textContent = students.length;
+
+            const totalQuiz = students.reduce((sum, s) => sum + s.quizCount, 0);
+            document.getElementById('total-quiz').textContent = totalQuiz;
+
+            const allScores = students.filter(s => s.quizCount > 0);
+            if (allScores.length > 0) {
+                const globalAvg = Math.round(allScores.reduce((s, x) => s + x.avgScore, 0) / allScores.length);
+                document.getElementById('avg-score').textContent = `${globalAvg}%`;
+            }
+
+            const today = new Date().toDateString();
+            const activeToday = students.filter(s => s.lastAccess && new Date(s.lastAccess).toDateString() === today);
+            document.getElementById('active-today').textContent = activeToday.length;
+        }
+
+        function filterStudents() {
+            const q = document.getElementById('search').value.toLowerCase();
+            const filtered = allStudents.filter(s =>
+                s.name.toLowerCase().includes(q) ||
+                s.nim.toLowerCase().includes(q)
+            );
+            renderTable(filtered);
+        }
+
+        function showDetail(studentId) {
+            const student = allStudents.find(s => s.id === studentId);
+            if (!student) return;
+
+            document.getElementById('modal-title').textContent = `Detail: ${student.name}`;
+
+            document.getElementById('modal-detail').innerHTML = `
+                <div class="detail-item"><div class="lbl">Nama</div><div class="val">${student.name}</div></div>
+                <div class="detail-item"><div class="lbl">NIM</div><div class="val">${student.nim}</div></div>
+                <div class="detail-item"><div class="lbl">Terdaftar</div><div class="val">${new Date(student.createdAt).toLocaleDateString('id-ID')}</div></div>
+                <div class="detail-item"><div class="lbl">Materi Dibaca</div><div class="val">${student.materiAccessed.length}/8</div></div>
+                <div class="detail-item"><div class="lbl">Terakhir Akses</div><div class="val">${student.lastAccess ? new Date(student.lastAccess).toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}) : 'Belum ada'}</div></div>
+                <div class="detail-item"><div class="lbl">Rata-rata Skor</div><div class="val">${student.quizCount > 0 ? student.avgScore + '%' : '-'}</div></div>
+            `;
+
+            const answersDiv = document.getElementById('modal-answers');
+
+            if (student.quizResults.length === 0) {
+                answersDiv.innerHTML = '<div class="no-data">Belum ada riwayat kuis</div>';
+            } else {
+                answersDiv.innerHTML = student.quizResults.map((quiz, qi) => {
+                    const date = new Date(quiz.submittedAt).toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit' });
+
+                    const answerHTML = quiz.answers.map((a, ai) => {
+                        const isCorrect = a.selected === a.correct;
+                        return `<li class="answer-item">
+                            <div class="q">${ai + 1}. ${quizQuestions[ai]}</div>
+                            <div class="a">
+                                Jawaban: ${isCorrect
+                                    ? `<strong>${a.selectedText}</strong> ✓`
+                                    : `<span class="wrong-ans">${a.selectedText}</span> → Seharusnya: <strong>${a.correctText}</strong>`
+                                }
+                            </div>
+                        </li>`;
+                    }).join('');
+
+                    const cls = quiz.percentage >= 80 ? 'green' : quiz.percentage >= 60 ? 'yellow' : 'red';
+
+                    return `
+                        <div style="margin-bottom:1.5rem;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                                <strong>Kuis #${qi + 1}</strong>
+                                <span>
+                                    <span class="badge ${cls}">${quiz.percentage}%</span>
+                                    <span style="font-size:0.8rem; color:var(--text-muted); margin-left:8px;">${date}</span>
+                                </span>
+                            </div>
+                            <ul class="answer-list">${answerHTML}</ul>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            document.getElementById('modal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('show');
+        }
+
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('modal')) closeModal();
+        });
+
+        loadStudents();
+    </script>
+</body>
+</html>

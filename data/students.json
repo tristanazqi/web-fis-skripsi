@@ -1,0 +1,16 @@
+[
+  {
+    "id": "bde4743d-a127-4be2-aaf9-a1ddcff53e72",
+    "name": "diah",
+    "nim": "diah123",
+    "role": "student",
+    "createdAt": "2026-07-26T02:57:44.900Z"
+  },
+  {
+    "id": "fefa4f5e-797f-4750-95dd-d16a2fbe0ff4",
+    "name": "diah",
+    "nim": "diah1234",
+    "role": "student",
+    "createdAt": "2026-07-26T03:30:16.835Z"
+  }
+]

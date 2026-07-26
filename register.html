@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - WEB-FIS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+            padding: 2rem;
+        }
+        .auth-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        .auth-card .logo {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .auth-card .logo span {
+            background: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            vertical-align: middle;
+        }
+        .auth-card .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            color: var(--text);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            outline: none;
+            font-family: inherit;
+        }
+        .form-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .auth-card .btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+        .auth-card .switch-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .auth-card .switch-text a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .error-msg {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: none;
+            border: 1px solid #fecaca;
+        }
+        .error-msg.show {
+            display: block;
+        }
+        .success-msg {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: none;
+            border: 1px solid #a7f3d0;
+        }
+        .success-msg.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-card">
+            <div class="logo"><span>E</span> WEB-FIS</div>
+            <p class="subtitle">Buat akun baru</p>
+
+            <div class="error-msg" id="error-msg"></div>
+            <div class="success-msg" id="success-msg"></div>
+
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" placeholder="Masukkan nama lengkap" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="nim">NIM</label>
+                    <input type="text" id="nim" placeholder="Masukkan NIM" required autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary">Daftar</button>
+            </form>
+
+            <p class="switch-text">
+                Sudah punya akun? <a href="index.html">Masuk di sini</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Cek apakah sudah login
+        const currentUser = localStorage.getItem('WEB-FIS_user');
+        if (currentUser) {
+            window.location.href = 'dashboard.html';
+        }
+
+        const form = document.getElementById('register-form');
+        const errorMsg = document.getElementById('error-msg');
+        const successMsg = document.getElementById('success-msg');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMsg.classList.remove('show');
+            successMsg.classList.remove('show');
+
+            const name = document.getElementById('name').value.trim();
+            const nim = document.getElementById('nim').value.trim();
+
+            try {
+                const res = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, nim })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    errorMsg.textContent = data.error;
+                    errorMsg.classList.add('show');
+                    return;
+                }
+
+                successMsg.textContent = 'Registrasi berhasil! Mengarahkan ke halaman login...';
+                successMsg.classList.add('show');
+
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            } catch (err) {
+                errorMsg.textContent = 'Gagal terhubung ke server';
+                errorMsg.classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>

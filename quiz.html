@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis - WEB-FIS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span>E</span> WEB-FIS
+            </a>
+            <ul class="nav-links">
+                <li><a href="materi.html">Materi</a></li>
+                <li><a href="quiz.html" class="active">Kuis</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="section-title">
+            <h2>Kuis Pemahaman</h2>
+            <p>Uji pemahamanmu tentang materi yang sudah dipelajari</p>
+        </div>
+        <div class="quiz-container">
+            <div class="quiz-progress">
+                <div class="bar" id="progress-bar" style="width: 0%"></div>
+            </div>
+            <div id="quiz-card" class="quiz-card">
+                <!-- Loaded by JS -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 WEB-FIS. Dibuat untuk Skripsi.</p>
+            <a href="tentang.html">Tentang Kami</a>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Kembali ke atas">↑</button>
+    <script src="js/main.js"></script>
+</body>
+</html>

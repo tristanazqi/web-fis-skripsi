@@ -1,0 +1,224 @@
+[
+  {
+    "id": "acbf35bc-831c-4435-9b00-dff715e4a182",
+    "studentId": "bde4743d-a127-4be2-aaf9-a1ddcff53e72",
+    "score": 4,
+    "total": 8,
+    "percentage": 50,
+    "answers": [
+      {
+        "questionIndex": 0,
+        "selected": 0,
+        "selectedText": "Hyper Text Markup Language",
+        "correct": 0,
+        "correctText": "Hyper Text Markup Language",
+        "isCorrect": true
+      },
+      {
+        "questionIndex": 1,
+        "selected": 2,
+        "selectedText": "Memproses data di server",
+        "correct": 1,
+        "correctText": "Mempercantik tampilan halaman web",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 2,
+        "selected": 0,
+        "selectedText": "Python",
+        "correct": 2,
+        "correctText": "JavaScript",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 3,
+        "selected": 2,
+        "selectedText": "Membuat tautan/link",
+        "correct": 2,
+        "correctText": "Membuat tautan/link",
+        "isCorrect": true
+      },
+      {
+        "questionIndex": 4,
+        "selected": 3,
+        "selectedText": "Node.js",
+        "correct": 2,
+        "correctText": "Tailwind CSS",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 5,
+        "selected": 1,
+        "selectedText": "Document Object Model",
+        "correct": 1,
+        "correctText": "Document Object Model",
+        "isCorrect": true
+      },
+      {
+        "questionIndex": 6,
+        "selected": 2,
+        "selectedText": "GET",
+        "correct": 2,
+        "correctText": "GET",
+        "isCorrect": true
+      },
+      {
+        "questionIndex": 7,
+        "selected": 3,
+        "selectedText": "Colorful Style Sheets",
+        "correct": 1,
+        "correctText": "Cascading Style Sheets",
+        "isCorrect": false
+      }
+    ],
+    "submittedAt": "2026-07-26T02:58:18.062Z"
+  },
+  {
+    "id": "2b6ae12c-5785-4b97-ac3f-dec89f6f9265",
+    "studentId": "fefa4f5e-797f-4750-95dd-d16a2fbe0ff4",
+    "score": 1,
+    "total": 8,
+    "percentage": 13,
+    "answers": [
+      {
+        "questionIndex": 0,
+        "selected": 0,
+        "selectedText": "Hyper Text Markup Language",
+        "correct": 0,
+        "correctText": "Hyper Text Markup Language",
+        "isCorrect": true
+      },
+      {
+        "questionIndex": 1,
+        "selected": 2,
+        "selectedText": "Memproses data di server",
+        "correct": 1,
+        "correctText": "Mempercantik tampilan halaman web",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 2,
+        "selected": 0,
+        "selectedText": "Python",
+        "correct": 2,
+        "correctText": "JavaScript",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 3,
+        "selected": 1,
+        "selectedText": "Membuat paragraf",
+        "correct": 2,
+        "correctText": "Membuat tautan/link",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 4,
+        "selected": 1,
+        "selectedText": "Laravel",
+        "correct": 2,
+        "correctText": "Tailwind CSS",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 5,
+        "selected": 2,
+        "selectedText": "Data Output Manager",
+        "correct": 1,
+        "correctText": "Document Object Model",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 6,
+        "selected": 0,
+        "selectedText": "POST",
+        "correct": 2,
+        "correctText": "GET",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 7,
+        "selected": 3,
+        "selectedText": "Colorful Style Sheets",
+        "correct": 1,
+        "correctText": "Cascading Style Sheets",
+        "isCorrect": false
+      }
+    ],
+    "submittedAt": "2026-07-26T03:30:47.881Z"
+  },
+  {
+    "id": "92f99dc3-e0ca-4012-9a86-f601aa307a5f",
+    "studentId": "fefa4f5e-797f-4750-95dd-d16a2fbe0ff4",
+    "score": 3,
+    "total": 8,
+    "percentage": 38,
+    "answers": [
+      {
+        "questionIndex": 0,
+        "selected": 0,
+        "selectedText": "Hyper Text Markup Language",
+        "correct": 0,
+        "correctText": "Hyper Text Markup Language",
+        "isCorrect": true
+      },
+      {
+        "questionIndex": 1,
+        "selected": 0,
+        "selectedText": "Membuat struktur halaman web",
+        "correct": 1,
+        "correctText": "Mempercantik tampilan halaman web",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 2,
+        "selected": 1,
+        "selectedText": "Java",
+        "correct": 2,
+        "correctText": "JavaScript",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 3,
+        "selected": 1,
+        "selectedText": "Membuat paragraf",
+        "correct": 2,
+        "correctText": "Membuat tautan/link",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 4,
+        "selected": 3,
+        "selectedText": "Node.js",
+        "correct": 2,
+        "correctText": "Tailwind CSS",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 5,
+        "selected": 1,
+        "selectedText": "Document Object Model",
+        "correct": 1,
+        "correctText": "Document Object Model",
+        "isCorrect": true
+      },
+      {
+        "questionIndex": 6,
+        "selected": 1,
+        "selectedText": "PUT",
+        "correct": 2,
+        "correctText": "GET",
+        "isCorrect": false
+      },
+      {
+        "questionIndex": 7,
+        "selected": 1,
+        "selectedText": "Cascading Style Sheets",
+        "correct": 1,
+        "correctText": "Cascading Style Sheets",
+        "isCorrect": true
+      }
+    ],
+    "submittedAt": "2026-07-26T03:47:16.408Z"
+  }
+]

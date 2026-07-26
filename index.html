@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB-FIS - Masuk</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+            padding: 2rem;
+        }
+        .auth-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        .auth-card .logo {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .auth-card .logo span {
+            background: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            vertical-align: middle;
+        }
+        .auth-card .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            color: var(--text);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            outline: none;
+            font-family: inherit;
+        }
+        .form-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .auth-card .btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+        .auth-card .switch-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .auth-card .switch-text a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .error-msg {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: none;
+            border: 1px solid #fecaca;
+        }
+        .error-msg.show {
+            display: block;
+        }
+        .admin-toggle {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+        }
+        .admin-toggle a {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .admin-toggle a:hover {
+            color: var(--primary);
+        }
+        .admin-form {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .admin-form.show {
+            display: block;
+        }
+        .admin-form .form-group input {
+            border-color: #fde68a;
+            background: #fffbeb;
+        }
+        .admin-form .form-group input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(245,158,11,0.1);
+        }
+        .admin-form .btn {
+            background: #1e293b;
+            color: white;
+        }
+        .admin-form .btn:hover {
+            background: #334155;
+        }
+        .divider {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-card">
+            <div class="logo"><span>E</span> WEB-FIS</div>
+            <p class="subtitle">Masuk ke akun kamu</p>
+
+            <div class="error-msg" id="error-msg"></div>
+
+            <!-- Form Login Siswa -->
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" placeholder="Masukkan nama lengkap" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="nim">NIM</label>
+                    <input type="text" id="nim" placeholder="Masukkan NIM" required autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary">Masuk</button>
+            </form>
+
+            <p class="switch-text">
+                Belum punya akun? <a href="register.html">Daftar di sini</a>
+            </p>
+
+            <!-- Admin Login Toggle -->
+            <div class="admin-toggle">
+                <a onclick="toggleAdmin()">Admin? Login di sini</a>
+            </div>
+
+            <!-- Form Login Admin -->
+            <div class="admin-form" id="admin-form">
+                <div class="form-group">
+                    <label for="admin-nim">NIM Admin</label>
+                    <input type="text" id="admin-nim" placeholder="Masukkan NIM Admin" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="admin-pass">Password</label>
+                    <input type="password" id="admin-pass" placeholder="Masukkan password admin">
+                </div>
+                <button type="button" class="btn" onclick="loginAdmin()">Masuk sebagai Admin</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cek apakah dijalankan lewat server
+        if (location.protocol === 'file:') {
+            document.getElementById('error-msg').textContent = 'Website harus dijalankan lewat server! Buka http://localhost:3000 di browser.';
+            document.getElementById('error-msg').classList.add('show');
+        }
+
+        // Cek apakah sudah login
+        const currentUser = localStorage.getItem('WEB-FIS_user');
+        if (currentUser) {
+            const user = JSON.parse(currentUser);
+            if (user.role === 'admin') {
+                window.location.href = 'admin.html';
+            } else {
+                window.location.href = 'dashboard.html';
+            }
+        }
+
+        const errorMsg = document.getElementById('error-msg');
+
+        // Login Siswa
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMsg.classList.remove('show');
+
+            const name = document.getElementById('name').value.trim();
+            const nim = document.getElementById('nim').value.trim();
+
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, nim })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    errorMsg.textContent = data.error;
+                    errorMsg.classList.add('show');
+                    return;
+                }
+
+                localStorage.setItem('WEB-FIS_user', JSON.stringify(data.student));
+                window.location.href = 'dashboard.html';
+            } catch (err) {
+                errorMsg.textContent = 'Gagal terhubung ke server. Pastikan server sudah dijalankan.';
+                errorMsg.classList.add('show');
+            }
+        });
+
+        // Toggle Admin Form
+        function toggleAdmin() {
+            const form = document.getElementById('admin-form');
+            form.classList.toggle('show');
+        }
+
+        // Login Admin
+        async function loginAdmin() {
+            errorMsg.classList.remove('show');
+
+            const nim = document.getElementById('admin-nim').value.trim();
+            const password = document.getElementById('admin-pass').value;
+
+            if (!nim || !password) {
+                errorMsg.textContent = 'Masukkan NIM Admin dan Password';
+                errorMsg.classList.add('show');
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nim, password })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    errorMsg.textContent = data.error;
+                    errorMsg.classList.add('show');
+                    return;
+                }
+
+                localStorage.setItem('WEB-FIS_user', JSON.stringify(data.admin));
+                window.location.href = 'admin.html';
+            } catch (err) {
+                errorMsg.textContent = 'Gagal terhubung ke server';
+                errorMsg.classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html>

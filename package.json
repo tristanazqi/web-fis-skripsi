@@ -1,0 +1,16 @@
+{
+  "name": "web-fis",
+  "version": "1.0.0",
+  "description": "Platform Pembelajaran Online - Skripsi",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "public": "node server.js --public"
+  },
+  "dependencies": {
+    "cloudflared": "^0.7.1",
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
+  }
+}
