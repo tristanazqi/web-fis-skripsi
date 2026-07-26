@@ -10,7 +10,7 @@
         .dashboard-hero {
             background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
             color: white;
-            padding: 2.5rem 2rem;
+            padding: 2rem 1.5rem;
             position: relative;
             overflow: hidden;
         }
@@ -36,7 +36,15 @@
             background: rgba(255,255,255,0.03);
             animation: float 8s ease-in-out infinite reverse;
         }
-        .hero-content { position: relative; z-index: 1; }
+        .hero-content { position: relative; z-index: 1; flex: 1; min-width: 0; }
+        .hero-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 2;
+        }
         .hero-greeting {
             font-size: 1rem;
             opacity: 0.85;
@@ -384,12 +392,12 @@
             .hero-name { font-size: 1.4rem; }
             .dashboard-hero { padding: 1.5rem 1rem; overflow: hidden; }
             .dashboard-hero::before, .dashboard-hero::after { display: none; }
-            .btn-logout { width: 100%; margin-top: 0.5rem; text-align: center; }
+            .hero-container { flex-direction: column; align-items: flex-start; }
+            .btn-logout { align-self: stretch; text-align: center; }
             .dash-stats { grid-template-columns: 1fr 1fr; margin-top: -1rem; padding: 0 1rem; }
             .dash-stat-card { padding: 1rem; }
             .dash-stat-card .num { font-size: 1.5rem; }
-            .quick-actions { padding: 0 1rem; }
-            .quick-actions { flex-direction: column; }
+            .quick-actions { padding: 0 1rem; flex-direction: column; }
             .quick-action { justify-content: center; }
             .dash-section { padding: 1rem; }
             .materi-progress-grid { grid-template-columns: 1fr; }
@@ -424,7 +432,7 @@
     </nav>
 
     <div class="dashboard-hero">
-        <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; position:relative; z-index:2;">
+        <div class="container hero-container">
             <div class="hero-content">
                 <p class="hero-greeting" id="greeting"></p>
                 <h1 class="hero-name" id="user-name"></h1>
